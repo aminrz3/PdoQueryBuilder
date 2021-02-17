@@ -167,5 +167,50 @@ $datas = $pdoQueryBuilder->table('users')
 ```
 
 ## ORDER
+```php
+$data = $pdoQueryBuilder->table('users')
+        ->where([
+            'name=>'Amin',
+            'ORDER'=>[
+                'id'=>'DESC'
+             ]
+        ])
+        ->get();
+        
+// Where name name='Amin' ORDER BY id DESC
 
+$data = $pdoQueryBuilder->table('users')
+        ->where([
+            'ORDER'=>[
+                'id'=>[1,2,3,4,5]
+             ]
+        ])
+        ->get();
+        
+// ORDER BY FIELD(id,1,2,3,4);
+```
+
+## LIMIT and OFFSET
+```php
+$data = $pdoQueryBuilder->table('users')
+        ->where([
+            'ORDER'=>[
+                'id'=>[1,2,3,4,5]
+             ]
+        ])
+        ->get();
+```
+
+## GROUP
+```php
+$data = $pdoQueryBuilder->table('users')
+        ->where([
+            //Get the First 50 Of rows
+            'LIMIT'=>50,
+            
+            //Started from the top 10 rows, and the get next 50
+            'LIMIT'=>[10,50],
+        ])
+        ->get();
+```
 
